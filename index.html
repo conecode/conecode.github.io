@@ -1,8 +1,112 @@
-<p>Hello 大家好</p>
-<p>我是霸都丶傲天，这是我的个人网站。 </p>
-<p>很高兴你来到这里, 你可以在以下的网站找到我</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炫酷个人主页</title>
+    <style>
+        /* 动态渐变背景 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #ff6e40, #42a5f5);
+            animation: gradientBG 15s ease infinite;
+            color: white;
+        }
 
-<ul>
-  <li> <a href="https://www.zhihu.com/people/AJLoveChina">知乎</a> </li>
-  <li> <a href="http://hejie.nigeerhuo.com">我的博客(已经不更细了,现在在知乎写文章)</a> </li>
-</ul>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 标题动画 */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* 卡片特效 */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .card { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1 data-text="创意开发者">创意开发者</h1>
+        <p>用代码创造无限可能</p>
+    </div>
+
+    <div class="card-container">
+        <div class="card">
+            <h2>关于我</h2>
+            <p>全栈开发者 | 技术爱好者</p>
+            <p>擅长：HTML/CSS/JavaScript/Python</p>
+        </div>
+
+        <div class="card">
+            <h2>项目展示</h2>
+            <div class="project">
+                <h3>智能聊天机器人</h3>
+                <p>基于深度学习的自然语言处理系统</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>联系我</h2>
+            <p>📧 your.email@example.com</p>
+            <p>📱 +86 138-0000-0000</p>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 30px;">
+        <p>© 2025 炫酷个人主页 | 访问量 <span id="counter">0</span></p>
+    </footer>
+
+    <script>
+        // 简单访问计数器
+        let count = localStorage.getItem('visitCount') || 0;
+        count++;
+        localStorage.setItem('visitCount', count);
+        document.getElementById('counter').textContent = count;
+    </script>
+</body>
+</html>
