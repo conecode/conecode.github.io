@@ -3,110 +3,468 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YUAN的个人主页</title>
+    <title>刘源 - 个人简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* 动态渐变背景 */
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(120deg, #ff6e40, #42a5f5);
-            animation: gradientBG 15s ease infinite;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .resume-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a3a6c, #2c5282);
             color: white;
+            padding: 40px 40px 30px;
+            position: relative;
         }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* 标题动画 */
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: slideIn 1s ease-out;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* 卡片特效 */
-        .card-container {
+        
+        .header-content {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 30px;
-            padding: 0 20px;
         }
-
-        .card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            width: 300px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        
+        .name-title h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        
+        .name-title h2 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            opacity: 0.9;
         }
-
-        /* 响应式设计 */
+        
+        .contact-info {
+            text-align: right;
+            margin-top: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        
+        .contact-item i {
+            margin-left: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            padding: 30px 40px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            color: #1a3a6c;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e7ff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 12px;
+            font-size: 1.4rem;
+        }
+        
+        .education-item, .project-item, .award-item {
+            margin-bottom: 28px;
+        }
+        
+        .education-header, .project-header, .award-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .education-date, .project-date, .award-date {
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .education-school, .project-name, .award-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #2d3748;
+        }
+        
+        .education-major, .project-type {
+            font-style: italic;
+            color: #4a5568;
+            margin: 5px 0;
+        }
+        
+        .education-honor, .project-desc {
+            margin-top: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .education-honor::before, .project-desc::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4299e1;
+        }
+        
+        .publication-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        .publication-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .publication-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2d3748;
+        }
+        
+        .publication-details {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #4299e1;
+        }
+        
+        .skill-category h3 {
+            color: #2b6cb0;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: #ebf8ff;
+            color: #2b6cb0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .project-desc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .project-desc li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .project-desc li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4299e1;
+            font-weight: bold;
+        }
+        
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5em; }
-            .card { width: 100%; }
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-info {
+                text-align: left;
+                margin-top: 20px;
+            }
+            
+            .contact-item {
+                justify-content: flex-start;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1 data-text="创意开发者">创意开发者</h1>
-        <p>用代码创造无限可能</p>
-    </div>
-
-    <div class="card-container">
-        <div class="card">
-            <h2>关于我</h2>
-            <p>全栈开发者 | 技术爱好者</p>
-            <p>擅长：HTML/CSS/JavaScript/Python</p>
-        </div>
-
-        <div class="card">
-            <h2>项目展示</h2>
-            <div class="project">
-                <h3>智能聊天机器人</h3>
-                <p>基于深度学习的自然语言处理系统</p>
+    <div class="resume-container">
+        <header>
+            <div class="header-content">
+                <div class="name-title">
+                    <h1>刘源</h1>
+                    <h2>研发岗</h2>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>河南 许昌</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>13938903506</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>liu1279203886@163.com</span>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="card">
-            <h2>联系我</h2>
-            <p>📧 your.email@example.com</p>
-            <p>📱 +86 138-0000-0000</p>
-        </div>
+        </header>
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i>教育背景</h2>
+            
+            <div class="education-item">
+                <div class="education-header">
+                    <div class="education-school">北京邮电大学（学硕）</div>
+                    <div class="education-date">2023.09-至今</div>
+                </div>
+                <div class="education-major">机械工程（变构态无人系统）</div>
+                <div class="education-honor">连续两年获得研究生一等奖学金，2024年度北京邮电大学优秀研究生。</div>
+            </div>
+            
+            <div class="education-item">
+                <div class="education-header">
+                    <div class="education-school">武汉理工大学（本科）</div>
+                    <div class="education-date">2019.09-2023.06</div>
+                </div>
+                <div class="education-major">机械设计制造及其自动化</div>
+                <div class="education-honor">获得武汉理工大学两次优秀奖学金二等奖、三好学生、优秀毕业论文等。</div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-flask"></i>科研成果</h2>
+            
+            <div class="publication-item">
+                <div class="publication-title">Bat-Inspired Morphing UAV for Photovoltaic Maintenance A Dual-Stable Reconfigurable Design Enabling Cross-Panel Adaptive Cleaning</div>
+                <div class="publication-details"><i>IEEE Trans. Field Robot.</i> —作在投</div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="publication-title">Micro quadrotor with Ant-Inspired Bistable Gripper for Adaptive Perching and Wildlife Detection</div>
+                <div class="publication-details"><i>IEEE/RSJ International Conference on Intelligent Robots and Systems , IROS2025,</i> 第一作者，机器人旗舰顶尖</div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="publication-title">一种全自动沙漠梭梭树植树机</div>
+                <div class="publication-details">发明专利已授权</div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i>项目经历</h2>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">一端蜗居的变构态清洁飞行机器人</div>
+                    <div class="project-date">2024.05~2025.06</div>
+                </div>
+                <div class="project-type">科研纵向</div>
+                <div class="project-desc">
+                    <ul>
+                        <li>作为独立项目负责人主导开发蜗居仿生光伏清洁无人机系统，创新设计大面积比变形机构与联动智能双稳态旋翼转向系统，采用形状记忆合金驱动实现45ms内旋翼姿态转换。</li>
+                        <li>开发层压复合材料双稳态机臂锁定机构，设计记忆金属驱动旋翼末端角度调节装置与记忆金属控制系统。</li>
+                        <li>基于OpenCV与ROS开发视觉引导降落系统，完成5次样机迭代验证，采用3D打印与激光切割工艺制作实物。</li>
+                        <li>实现高达0.5km²/小时清洁效率，并发表论文。</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">切叶蚁启发的微型无人机用于自适应栖息与野生动物检测</div>
+                    <div class="project-date">2024.12~2025.03</div>
+                </div>
+                <div class="project-type">科研纵向</div>
+                <div class="project-desc">
+                    <ul>
+                        <li>作为独立项目负责人设计切叶蚁仿生变结构无人机及机械臂末端双稳态执行器系统。</li>
+                        <li>开发基于旋转双稳态结构的抓握机构与涡流结构启发的柔性抓捕模块。</li>
+                        <li>主导无人机飞行结构设计与控制系统集成，设计双稳态执行器实现末端抓取力自适应调节，实现20ms内对1~6cm直径物体进行稳固抓取。</li>
+                        <li>构建基于ROS仿真验证平台与驱动系统集成；采用3D打印与激光切割工艺制作样板。</li>
+                        <li>以第一作者身份发表机器人顶级会议IROS2025一篇。</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">2024年人形机器整机质量水平提升服务平台</div>
+                    <div class="project-date">2024.11~2025.03</div>
+                </div>
+                <div class="project-type">工信部高质量专项</div>
+                <div class="project-desc">
+                    <ul>
+                        <li>作为项目科研骨干，负责检测传感器测试的实验设计。</li>
+                        <li>使用中心对称式可调双稳态结构进行关节设计，可以实现腰部关节在23~55ms内产生10~90°旋转变形。</li>
+                        <li>使用ROS与Gazebo进行联合仿真，保证团队机器人算法得到验证。</li>
+                        <li>保证传感器能够在正确的位置进行信息采集，对采集到的信息使用神经网络与滤波进行处理，得到其噪声的传感器信号。</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">第十届全国大学生机械创新大赛 (机械组) 梭梭树沙漠便携种植机</div>
+                    <div class="project-date">2021.04~2022.01</div>
+                </div>
+                <div class="project-desc">
+                    <ul>
+                        <li>负责项目总体模型的协调装配，负责底盘的设计与选型。</li>
+                        <li>负责地盘的购买以及整体实物的组装，帮助组内其他成员完善电控程序设计。</li>
+                        <li>负责相关文档及PPT的制作。</li>
+                        <li>梭梭树沙漠便携种植机申请发明专利已授权（CN8417245U）。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-trophy"></i>奖励与荣誉</h2>
+            
+            <div class="award-item">
+                <div class="award-header">
+                    <div class="award-name">"华为杯" 第十二届中国研究生数学建模竞赛</div>
+                    <div class="award-date">2023.10</div>
+                </div>
+                <div class="award-desc">全国三等奖</div>
+            </div>
+            
+            <div class="award-item">
+                <div class="award-header">
+                    <div class="award-name">第十届全国大学生数学建模大赛</div>
+                    <div class="award-date">2021.10</div>
+                </div>
+                <div class="award-desc">省级一等奖</div>
+            </div>
+            
+            <div class="award-item">
+                <div class="award-header">
+                    <div class="award-name">第十届"华中杯" 大学生数学建模挑战赛</div>
+                    <div class="award-date">2021.06</div>
+                </div>
+                <div class="award-desc">全国一等奖</div>
+            </div>
+            
+            <div class="award-item">
+                <div class="award-header">
+                    <div class="award-name">第十届全国大学生机械创新大赛 (机械组)</div>
+                    <div class="award-date">2022.01</div>
+                </div>
+                <div class="award-desc">校级二等奖</div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-tools"></i>专业技能</h2>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>软件技能</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Office 办公软件</span>
+                        <span class="skill-tag">SolidWorks</span>
+                        <span class="skill-tag">CAD</span>
+                        <span class="skill-tag">Ansys</span>
+                        <span class="skill-tag">EDA (PCB绘制)</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>编程语言</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C#</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>开发环境</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">ROS (机器人开发)</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>制造工艺</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">3D 打印</span>
+                        <span class="skill-tag">激光切割</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-
-    <footer style="text-align: center; padding: 30px;">
-        <p>© 2025 炫酷个人主页 | 访问量 <span id="counter">0</span></p>
-    </footer>
-
-    <script>
-        // 简单访问计数器
-        let count = localStorage.getItem('visitCount') || 0;
-        count++;
-        localStorage.setItem('visitCount', count);
-        document.getElementById('counter').textContent = count;
-    </script>
 </body>
 </html>
